@@ -51,13 +51,13 @@ app.get('/shop/:id',(req, res)=>{
 app.post('/admin/savebook',(req, res)=>{
     const data = req.body
     if (!data.title)
-    return res.status(400).send("No title found")
+    return res.status(400).send({message:"No title found"})
 
     if (!data.author)
-    return res.status(400).send("No author found")
+    return res.status(400).send({message:"No author found"})
 
     if (!data.price)
-    return res.status(400).send("No price found")
+    return res.status(400).send({message:"No price found"})
 
     myBooks.insertOne(data)
     .then(response=>{
